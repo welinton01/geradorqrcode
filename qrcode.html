@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="qrcode.min.js"></script>
+</head>
+<body>
+    <div id="qrcode"></div>
+
+    <script>
+        // Texto ou link que você deseja codificar
+        var data
+        data = prompt(data)
+        
+
+        // Criação do objeto QRCode
+        var qr = new QRCode(document.getElementById("qrcode"), {
+            text: data,
+            width: 128,
+            height: 128
+        });
+    </script>
+</body>
+</html>
