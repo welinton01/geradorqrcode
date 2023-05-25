@@ -1,0 +1,86 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Gerador de QR Code</title>
+    <script src="qrcode.min.js"></script>
+    <style>
+      body{
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to right, #fcfcfc, #f5f5f5);
+      }
+      .container{
+          background-color: #f7f7f8;
+          width: 350px;
+          height: 400px;
+          padding: 20px 40px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          padding: 20px;
+          box-shadow: #00000020 5px 10px 30px;
+          border-radius: 20px;
+          border-color: #cecece 1px solid;
+          
+      }
+      h1{
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          font-size: 25px;
+      }
+      input{
+          font-size: 15px;
+          height: 30px;
+          border: #ccc solid 1px;
+          color: #555;
+      }
+      button{
+          background-color: rgb(0, 134, 223);
+          border: rgb(0, 134, 223) solid 1px;
+          height: 32px;
+          color: #fff;
+      }
+      .qrcode{
+          margin: 10px;
+          width: 200px;
+          height: 200px;
+          background-color: #fff;
+          position: absolute;
+          top: 35%;
+          left: 19%;
+          text-align: center;
+          padding: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+      <div class="container">  
+          <h1>Gerador de QR Code</h1>
+          <input type="text" id="text-input" placeholder="Insira o texto" onkeydown="pressionarEnter(event)">
+          <button onclick="gerarQRCode()" id="gerar">Gerar QR Code</button>
+          <br>
+          <div id="qrcode" class="qrcode"></div>
+      </div>
+    <script>
+      function gerarQRCode() {
+        var qrcode = null;
+        var texto = document.getElementById("text-input").value;
+        var qrcodeDiv = document.getElementById("qrcode");
+              // Limpar a div antes de gerar um novo QR Code
+              qrcodeDiv.innerHTML = '';
+        qrcode = new QRCode(document.getElementById("qrcode"), {
+          text: texto,
+          width: 200,
+          height: 200
+        });
+      };
+      function pressionarEnter(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("gerar").click();
+        }
+      }
+    </script>
+  </body>
+  </html>
